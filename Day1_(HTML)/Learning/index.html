@@ -13,6 +13,7 @@
     Files must end with '.html' extension.
     index.html is the root/home page of a website -->
     Hello World <!--shows even without the tags-->
+    <br>
 <!-- HTML Page structure-->
 <!-- <html>  //for metadata. !DOCTYPE is used to specify HTML5
         <head>
@@ -42,7 +43,7 @@
     <h1>About Us</h1>
     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam laudantium, dolorum dolorem molestias culpa fugit numquam animi maiores recusandae quam obcaecati eum expedita necessitatibus aut iusto cupiditate error cum deleniti!</p>
     <!--Some tags are self closing-->
-    <br>
+    <br><!--Line Break Tag-->
     </br>
 <!-- Heading -->
     <!-- Headings are used to emphasize on a particuar content and the heading number specifies the importance of the content. There is in-browser styling for each of these but we can change it through css.
@@ -58,5 +59,135 @@
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint voluptates reprehenderit in. Culpa enim nostrum iste tenetur quidem beatae maxime odit. A exercitationem non dicta ipsum inventore cupiditate adipisci officiis!</p>
     <!-- Use lorem or lorem10 etc. for generating texts. -->
     <!-- Paragraph is a block element -->
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, odit!</p>
+<!-- Link  -->
+    <a href="https://www.google.com/" target="_blank">google</a>
+    <!-- 'href' is an attribute for the reference of the link which is the actual location to go to once a link is clicked. 
+    usually link open in the same tab but if you want to open the link in a new tab, you can use 'target' attribute with value eith _blank or _main. -->
+<!-- Tag attribute -->
+    <!-- It provides more information about a tag i.e., title,href,src 
+    Placed within the opening tag
+    key/value pairs i.e., id="hello" -->
+    <a href="https://www.youtube.com/" target="_main">youtube</a>
+<!-- Lists -->
+    <!-- unordered Lists //block tags-->
+        <ul>
+            <!--List items-->
+            <li>unordered List item1</li>
+            <li>unordered List item2</li>
+        </ul>
+    <!-- ordered Lists //block tags-->
+        <ol>
+            <!--List items-->
+            <li>ordered List item1</li>
+            <li>ordered List item2</li>
+        </ol>
+<!-- Tables -->
+    <!-- Every table tag is block tag inclusing <table>,<thead>,<tr>,<tbody>-->
+    <!-- DONOT USE TABLES FOR WEBSITE LAYOUT -->
+    <table>
+        <thead>
+            <tr>
+                <!-- <th> is inline tags -->
+                <th>Name</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <!-- <td> is inline tags -->
+                <td>Misbah</td>
+                <td>21</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr> <!--horizontal line tag-->
+<!-- Forms -->
+    <!-- We can only layout the form and not the functionality, we would need js/php for the functionality. -->
+    <!-- The attribute 'action' is used to specify to which backend file the data will go once the form is submitted i.e., action='process.php'
+    The attribute 'method' is used to specify what happens to the data once the form is submitted i.e., method='GET'
+    "GET" means we retrieve the data from the backend file/server specified.
+    "POST" meansn we post the data of the form to the backend file/server specified. -->
+    <form action="" method="POST">
+        <div><!--block tag-->
+        <!-- Label tag is necessary to specify which entry it is being used for. 'for' attrbute takes the name of the entry and writes the 'content name' for the entry in the form. It is also used for accessibility -->
+        <!-- read every attribute carefully -->
+            <label for="fullName">Name</label>
+            <input type="text" name="fullName" placeholder="Full Name" required>
+        </div>
+        <div>
+            <!-- Email -->
+            <label for="email">Email</label>
+            <input type="email" name="email" placeholder="abc@gmail.com">
+        </div>
+        <div>
+            <!-- Radio Buttons -->
+            <label for="Gender"></label>
+            <input type="radio" name="Gender" Value="Female">Female
+            <input type="radio" name="Gender" value="Male">Male
+        </div>
+        <div>
+            <label for="message">Feedback</label>
+            <textarea name="message" placeholder="Feedback here!"></textarea>
+        </div>
+        <div>
+            <!-- DropDown Menu -->
+            <label for="city">City</label>
+            <select name="city">
+                <option value="ISB">Islamabad</option>
+                <option value="RWP" selected>Rawalpindi</option>
+            </select>
+        </div>
+        <div>
+            <!-- Files -->
+            <label for="files">Select files:</label>
+            <input type="file" name="files" multiple>
+            <input type="file" name="files">
+        </div>
+        <div>
+            <!-- Limiting size of input -->
+            <label for="pin">PIN:</label><br>
+            <input type="text" name="pin" maxlength="4" size="4">
+        </div>
+        <div>
+            <!-- Date -->
+            <label for="datemax">Enter a date before 1980-01-01:</label>
+            <input type="date" name="datemax" max="1979-12-31">
+        </div>
+        <div>
+            <!-- Number -->
+            <label for="quantity">Quantity (between 1 and 5):</label>
+            <input type="number" id="quantity" name="quantity" min="1" max="5" value="3" >
+        </div>
+        <!-- Submit Button -->
+        <input type="submit" name="submit" value="submit">
+    </form>
+<!-- Buttons -->
+    <button onclick="">Click Me</button>
+    <!-- Button is inline tag -->
+    <br>
+<!-- images -->
+    <!-- Here we used image as a link. You can click on an image to open a link -->
+    <!-- Image is an inline tag -->
+    <a href="https://www.google.com/search?sca_esv=8eb2b271edd6fc02&rlz=1C1CHBF_en-GBPK1109PK1109&q=cat&tbm=isch&source=lnms&fbs=AEQNm0AGpLZyWf3DHiZoMmYa9i1tRwz0KLkNms9tHoq8kqftSdZdWCog0vD3ykLuAuuMJ41a4qcIME1ZBOSzfYyFNlWvB3gUBInTIUAxYVEkfdyLm1k_xAHbwhoVSD4r-tJsfKtXOzJs80dnZ2Hm2iCXYAhTaQ5BaDdckdtrm6Cu3dyXC8_RWxE&sa=X&ved=2ahUKEwifvNiPo-WGAxUIS_EDHTKYA90Q0pQJegQIDBAB&biw=729&bih=627&dpr=1.75#imgrc=eAP244UcF5wdYM"><img src="https://www.google.com/search?sca_esv=8eb2b271edd6fc02&rlz=1C1CHBF_en-GBPK1109PK1109&q=cat&tbm=isch&source=lnms&fbs=AEQNm0AGpLZyWf3DHiZoMmYa9i1tRwz0KLkNms9tHoq8kqftSdZdWCog0vD3ykLuAuuMJ41a4qcIME1ZBOSzfYyFNlWvB3gUBInTIUAxYVEkfdyLm1k_xAHbwhoVSD4r-tJsfKtXOzJs80dnZ2Hm2iCXYAhTaQ5BaDdckdtrm6Cu3dyXC8_RWxE&sa=X&ved=2ahUKEwifvNiPo-WGAxUIS_EDHTKYA90Q0pQJegQIDBAB&biw=729&bih=627&dpr=1.75#imgrc=eAP244UcF5wdYM" alt="cat" height="200px"></a>
+<!-- Quotations -->
+    <Blockquote cite="https://www.wikipedia.org/">This is a quotation</Blockquote>
+    <!-- It is a block tag -->
+<!-- Abbreviation -->
+    <!-- abbr is an inline tag -->
+    <abbr title="World Wide Web">WWW</abbr>
+<!-- Citation -->
+    <!-- It is an inline tag -->
+    <cite>This is citation</cite>
+
+<!-- Inline vs Block tag -->
+    <!-- Inline do not start with new line i.e., <span>,<img>,<a>
+    Block line elements start with new line and they take the entire width of that line.i.e., <div>,<h1>,<p>-->
+
+    <p><!--block tag-->Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus tempora <strong><!--inline tag for bolding text-->strong strong strong</strong> non rerum pariatur repudiandae harum consectetur facere libero ea inventore unde autem, <em><!--inline tag for italic (emphasize)-->emphasized emphasized emphasized</em> labore adipisci impedit at voluptates, culpa odio. Corporis laudantium illum vero voluptatum debitis quisquam. Ut laudantium rem porro dolores <a href="https://www.google.com/"><!--inline tag for links (anchor)-->google</a> est, sed accusantium!</p>
+
+<!-- HTML5 Sematic tags -->
+    <!-- They tell the developer and the browser exactly what it means. They are usually used for like layout i.e., <nav>,<article>,<aside>,<header> etc. -->
+    <a href="../Task1/landingPage.html">HTML_TASK</a>
 </body>
 </html>
