@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="images/icon.png"> <!--important-->
+    <title>Sign Up | LinkedIn</title>
+    <style>
+        body{
+            background-color: #F3F2F0;
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+            height:100%;
+            margin:0;
+        }
+        .main{
+            max-width: 1128px;
+            padding-top: 24px;
+            padding-bottom: 24px;
+            padding-left: 16px;
+            padding-right: 16px;
+            width: 100%;
+            margin: 0 auto;
+            flex: 1 0 auto;
+            box-sizing: border-box;
+        }
+        header{
+            line-height: 1;
+        }
+        .logo{
+            width: 137px;
+            display: block;
+        }
+        h1{
+            text-align: center !important;
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+            padding-top: 24px !important;
+            padding-bottom: 27px !important;
+            font-weight: 400 !important;
+            font-size: 32px !important;
+            margin: 0;
+        }
+        .signup{
+            background-color: white;
+            width:400px;
+            margin: auto;
+            box-sizing: border-box;
+            overflow: hidden;
+            border-radius: 8px;
+            padding:0;
+            border:0;
+        }
+        form{
+            width: 100% !important;
+            padding-left: 24px !important;
+            padding-right: 24px !important;
+            display: flex;
+            max-width: 400px;
+            margin: 0 auto;
+            padding-top: 25px;
+            position: relative;
+            border-radius: 0;
+            box-sizing: border-box;
+            flex-direction: column;
+        }
+        .form{
+            width:100%;
+            display: flex;
+            flex-flow: row wrap;
+        }
+        label{
+            font-size: 14px;
+            font-weight: 600;
+            color:#404040;
+            display:block !important;
+            margin: 16px 0 5px 0;
+            
+        }
+        #email{
+            margin-top: 0%;
+        }
+        input{
+            height: 3px !important;
+            border-radius: 4px;
+            border-width: 1px;
+            border-style: solid;
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 14px;
+            padding-bottom: 14px;
+            font-size: 16px;
+            width:100%;
+        }
+        .terms{
+            margin-top: 16px;
+            margin-bottom: 16px;
+            text-align: center;
+            color: rgba(0, 0, 0, 0.6);
+            font-size: 0.75rem;
+            line-height: 1.3333;
+            
+        }
+        .terms a{
+            color:#0a66c2;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .submit{
+            display: block;
+            margin: 0 auto;
+            width:100% !important;
+            line-height: normal !important;
+            box-shadow: 0 0 0 1px white !important;
+            background-color: #0a66c2 !important;
+            color: white !important;
+            height: min-content;
+            min-height: 48px;
+            border-radius: 24px;
+            padding-top: 12px;
+            padding-bottom: 12px;
+            padding-left: 24px;
+            padding-right: 24px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 600;
+            z-index: 0;
+            border-color: #0a66c2;
+            font-family: inherit;
+            overflow: hidden;
+            outline-width: 2px;
+            box-sizing: border-box;
+        }
+        .signIn{
+            text-align: center;
+            margin: 0 auto;
+            padding: 16px 16px 24px 16px;
+        }
+        .signIn a,.business a{
+            color: #0a66c2;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .business{
+            font-weight: normal;
+            padding-top: 16px;
+            text-align: center;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        footer{
+            background-color: white;
+            --footer_color:#404040;
+            display: block;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            width:100%;
+            bottom: 0%;
+            height:8% !important;
+            box-sizing: border-box;
+        }
+        ul{
+            list-style-type: none; 
+            display: flex; 
+            width: 1128px;
+            justify-content: flex-start;
+            align-items: flex-start;
+            margin:0 auto;
+            min-width: 50px;
+            line-height: 1.5;
+            padding: 0;
+        }
+        ul li{
+            font-size: 12px;
+            padding: 8px;
+            text-align: left;
+        }
+        ul li a{
+            text-decoration: none;
+            color: var(--footer_color);
+        }
+        ul li a:hover{
+            text-decoration: underline;
+            color:#0a66c2;
+        }
+        ul li select{
+            border:1px dotted transparent;
+            font-size: 12px;
+            color: var(--footer_color);
+            font-weight: normal;
+        }
+        ul li select:active{
+            border:1px dotted transparent;
+        }
+    </style>
+</head>
+<body>
+        <main class="main">
+            <header>
+                <div tabindex="0"><img class="logo" src="images/LinkedIn_logo.svg" alt="logo"> <!--has to be an svg.--></div>
+                <h1>Make the most of your professional life </h1>
+            </header>
+            <div class="signup">
+                <form action="" method="POST">
+                    <div class="form">
+                        <label for="email" id="email">Email</label>
+                        <input type="email" name="email">
+                        <label for="password">Password (6+ characters)</label>
+                        <input type="password" name="password">
+                    </div>
+                    <p class="terms">By clicking Agree & Join, you agree to the LinkedIn <a href="">User Agreement</a>, <a href="">Privacy Policy</a>, and <a href="">Cookie Policy</a>.</p>
+                    <button value="Agree &amp; Join" type="submit" class="submit">Agree &amp; Join</button>
+                </form>
+                <p class="signIn">
+                    Already on LinkedIn? <a href="https://www.linkedin.com/uas/login?fromSignIn=true&amp;trk=cold_join_sign_in">Sign in</a>
+                </p>
+            </div>
+            <p class="business">Looking to create a page for a business? <a href="https://www.linkedin.com/help/linkedin/answer/710?trk=registration-frontend_join-form-page-help-link">Get help</a></p>
+        </main>
+        <footer>
+            <ul>
+                <li><img src="images/LinkedIn_logo.svg" alt="logo" width="56px" height="14px"> &copy; 2024</li>
+                <li><a class="" href="">About</a></li>
+                <li><a href="">Accessibility</a></li>
+                <li><a href="">User Agreement</a></li>
+                <li><a href="">Privacy Policy</a></li>
+                <li><a href="">Cookie Policy</a></li>
+                <li><a href="">Copyright Policy</a></li>
+                <li><a href="">Brand Policy</a></li>
+                <li><a href="">Guest Controls</a></li>
+                <li><a href="">Community Guidelines</a></li>
+                <li>
+                <select name="language">
+                    <option selected>Language</option>
+                    <option value="English">English</option>
+                    <option value="Urdu">Urdu</option>
+                </select>
+                </li>
+            </ul>
+        </footer>
+</body>
+</html>
