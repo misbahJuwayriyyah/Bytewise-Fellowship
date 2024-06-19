@@ -9,6 +9,7 @@ For the task of the first day, I created the structure of LinkedIn sign up page 
 This time, we focused on CSS, which is essential for styling your HTML pages. For the task of second and third day, I styled the previously created LinkedIn sign up page (clone) and make it look like the original sign up page of linkedIn.
 
 ![clone of linkedIn sign up page](proof_of_work/signup(clone).png)
+<p style="text-align:center;">clone of linkedIn sign up page</p>
 
 
 **_Week 01 (Day-4): CSS Properties_**
