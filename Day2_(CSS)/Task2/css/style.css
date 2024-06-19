@@ -1,0 +1,186 @@
+body{
+    background-color: #F3F2F0;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+    height:100%;
+    margin:0;
+}
+.main{
+    max-width: 1128px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    padding-left: 16px;
+    padding-right: 16px;
+    width: 100%;
+    margin: 0 auto;
+    flex: 1 0 auto;
+    box-sizing: border-box;
+}
+header{
+    line-height: 1;
+}
+.logo{
+    width: 137px;
+    display: block;
+}
+h1{
+    text-align: center !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    padding-top: 24px !important;
+    padding-bottom: 27px !important;
+    font-weight: 400 !important;
+    font-size: 32px !important;
+    margin: 0;
+}
+.signup{
+    background-color: white;
+    width:400px;
+    margin: auto;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-radius: 8px;
+    padding:0;
+    border:0;
+}
+form{
+    width: 100% !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+    display: flex;
+    max-width: 400px;
+    margin: 0 auto;
+    padding-top: 25px;
+    position: relative;
+    border-radius: 0;
+    box-sizing: border-box;
+    flex-direction: column;
+}
+.form{
+    width:100%;
+    display: flex;
+    flex-flow: row wrap;
+}
+label{
+    font-size: 14px;
+    font-weight: 600;
+    color:#404040;
+    display:block !important;
+    margin: 16px 0 5px 0;
+    
+}
+#email{
+    margin-top: 0%;
+}
+input{
+    height: 3px !important;
+    border-radius: 4px;
+    border-width: 1px;
+    border-style: solid;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    font-size: 16px;
+    width:100%;
+}
+.terms{
+    margin-top: 16px;
+    margin-bottom: 16px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 0.75rem;
+    line-height: 1.3333;
+    
+}
+.terms a{
+    color:#0a66c2;
+    text-decoration: none;
+    font-weight: 600;
+}
+.submit{
+    display: block;
+    margin: 0 auto;
+    width:100% !important;
+    line-height: normal !important;
+    box-shadow: 0 0 0 1px white !important;
+    background-color: #0a66c2 !important;
+    color: white !important;
+    height: min-content;
+    min-height: 48px;
+    border-radius: 24px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 24px;
+    padding-right: 24px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    z-index: 0;
+    border-color: #0a66c2;
+    font-family: inherit;
+    overflow: hidden;
+    outline-width: 2px;
+    box-sizing: border-box;
+}
+.signIn{
+    text-align: center;
+    margin: 0 auto;
+    padding: 16px 16px 24px 16px;
+}
+.signIn a,.business a{
+    color: #0a66c2;
+    text-decoration: none;
+    font-weight: 600;
+}
+.business{
+    font-weight: normal;
+    padding-top: 16px;
+    text-align: center;
+    margin: 0;
+    font-size: 0.9rem;
+}
+footer{
+    background-color: white;
+    --footer_color:#404040;
+    display: block;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    width:100%;
+    bottom: 0%;
+    height:8% !important;
+    box-sizing: border-box;
+}
+ul{
+    list-style-type: none; 
+    display: flex; 
+    width: 1128px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin:0 auto;
+    min-width: 50px;
+    line-height: 1.5;
+    padding: 0;
+}
+ul li{
+    font-size: 12px;
+    padding: 8px;
+    text-align: left;
+}
+ul li a{
+    text-decoration: none;
+    color: var(--footer_color);
+}
+ul li a:hover{
+    text-decoration: underline;
+    color:#0a66c2;
+}
+ul li select{
+    border:1px dotted transparent;
+    font-size: 12px;
+    color: var(--footer_color);
+    font-weight: normal;
+}
+ul li select:active{
+    border:1px dotted transparent;
+}
