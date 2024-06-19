@@ -3,6 +3,10 @@
 On day 1 of MERN track Fellowship! We started with the basics of HTML, the foundation of web development.
 For the task of the first day, I created the structure of LinkedIn sign up page (clone) using HTML.
 
+| ![structure of LinkedIn signup page](proof_of_work/markup.png) | 
+|:--:| 
+| *structure of LinkedIn signup page* |
+
 
 **_Week 01 (Day-2+3): CSS Basics and Styling Best Practices_**
 
