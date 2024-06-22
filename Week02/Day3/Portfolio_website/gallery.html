@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Gallery - Misbah Juwayriyyah</title>
+    <style>
+        @media (min-width: 600px) {
+            .gallery {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+
+        @media (min-width: 900px) {
+            .gallery {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .gallery {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Gallery</h1>
+    </header>
+
+    <nav>
+        <ul class="navigation">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="skills.html">Skills</a></li>
+            <li><a href="experience.html">Experience</a></li>
+            <li><a href="societies.html">Societies</a></li>
+            <li class="active"><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="gallery">
+        <div class="image">
+            <img src="images/Me.jpeg" alt="Image 1">
+            <div class="overlay">
+                <h3>Barbie</h3>
+            </div>
+        </div>
+
+        <div class="image">
+            <img src="images/Me2.jpeg" alt="Image 2">
+            <div class="overlay">
+                <h3>Orientation Nights</h3>
+            </div>
+        </div>
+
+        <div class="image">
+            <img src="images/Me1.jpeg" alt="Image 3">
+            <div class="overlay">
+                <h3>Mountain Adventure</h3>
+            </div>
+        </div>
+
+        <div class="image">
+            <img src="images/Me3.jpeg" alt="Image 4">
+            <div class="overlay">
+                <h3>Margalla</h3>
+            </div>
+        </div>
+        <div class="image">
+            <img src="images/Me5.jpeg" alt="Image 4">
+            <div class="overlay">
+                <h3>Welcome</h3>
+            </div>
+        </div>
+
+
+    </main>
+
+    <footer>&copy; Misbah</footer>
+</body>
+
+</html>
