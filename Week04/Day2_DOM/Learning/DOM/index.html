@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation</title>
+    <style>
+        body{
+            background-color: #2E3D47;
+            margin:0;
+            color: white;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container{
+            border:3px solid white;
+            width:30%;
+            margin:auto;
+            display: flex;
+            flex-direction: column;
+            justify-items: center;
+            align-items: center;
+            border-radius: 10px;
+        }
+        ul{
+            width:100%;
+            box-sizing: border-box;
+            margin: 0;
+            margin-bottom: 2%;
+        }
+        .list-items{
+            width:90%;
+            list-style: none;
+            background-color: white;
+            color: black;
+            border: 2px solid #2E3D47;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+<!-- DOM:
+    DOM stands for Document Object Model. We can use it to manipulate content, style and structure of website. It is one of the most unique and useful tools of Js.
+ -->
+<!-- DOM tree (consists of nodes with parent-child relationship): 
+    Document -> Element <html> -> Element <head> -> Element <title> -> Text: 'website'
+                    |
+                    |->Element <body> -> Element <p> -> Text: 'hi'
+                            |->Element <h1> -> Text: 'hi' -->
+    <div class="container">
+        <h1 id="main-heading">Favourite Movie Franchise</h1>
+        <ul>
+            <li class="list-items">The Matrix</li>
+            <li class="list-items">Star Wars</li>
+            <li class="list-items">Harry Potter</li>
+            <li class="list-items">Lord of the Rings</li>
+            <li class="list-items">Marvel</li>
+        </ul>
+    </div>
+    <div class="container">
+        <h1 id="main-heading">Favourite Sports Franchise</h1>
+        <ul>
+            <li class="list-items">The Matrix</li>
+            <li class="list-items">Star Wars</li>
+            <li class="list-items">Harry Potter</li>
+            <li class="list-items">Lord of the Rings</li>
+            <li class="list-items">Marvel</li>
+        </ul>
+    </div>                          
+    <script src="app.js"></script>
+</body>
+</html>

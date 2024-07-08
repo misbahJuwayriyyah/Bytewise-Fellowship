@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Propagation</title>
+    <style>
+        body,div,button{
+            border:3px solid white;
+            border-radius: 5%;
+            background-color: #2F404C;
+            color:white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            width:50%;
+            align-items: center;
+            margin:10%;
+        }
+        body{
+            height:100vh;
+            margin:0;
+            width:100%;
+        }
+    </style>
+</head>
+<body>
+<!-- Event Propagation means how an event travels through DOM.
+    Three phases of Event Propagation:
+    1. Event Capturing (starts from root to reach the target)
+    2. Target (After target, it goes to event bubbling)
+    3. Event Bubbling (goes back to root from the target) --> 
+    <div class="div2">
+        2
+        <div class="div1">
+            1
+            <button>Click</button>
+        </div>
+    </div>
+</body>
+</html>

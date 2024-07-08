@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>To-Do App</title>
+</head>
+<body>
+    <header id="main-header">
+        <div class="container">
+            <h1>Today</h1>
+            <form action="" id="todo-form">
+                <input type="text" name="task-name" placeholder="e.g. Buy Groceries" autofocus> <!--Autofocus is used so that even after the page is refreshed, the focus is still on this element.-->
+                <button type="submit">Add Task</button>
+            </form>
+        </div>
+    </header>
+    <section>
+        <div class="container" id="main-content">
+            <ul class="stats">
+                <li><span>Remaining</span><span id="remaining-task">0</span></li>
+                <li><span>Completed</span><span id="completed-task">0</span></li>
+                <li><span>Total</span><span id="total-task">0</span></li>
+            </ul>
+            <ul class="todos">
+                <li>
+                    <div>
+                        <input type="checkbox" name="tasks" id="1">
+                        <span>Task 1</span>
+                    </div>
+                    <button title="Remove Task" class="remove-task">
+                        <svg viewBox="0 0 24 24" fill="none" width="24" height="24">
+                            <path d="M17.25 17.25L6.75 6.75" stroke="#A4D0E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M17.25 6.75L6.75 17.25" stroke="#A4D0E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </li>
+                <li>
+                    <div>
+                        <input type="checkbox" name="tasks" id="2">
+                        <span>Task 2</span>
+                    </div>
+                    <button title="Remove Task" class="remove-task">
+                        <svg viewBox="0 0 24 24" fill="none" width="24" height="24">
+                            <path d="M17.25 17.25L6.75 6.75" stroke="#A4D0E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M17.25 6.75L6.75 17.25" stroke="#A4D0E3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <p>Designed by Misbah Juwayriyyah</p>
+        </div>
+    </footer>
+</body>
+</html>
