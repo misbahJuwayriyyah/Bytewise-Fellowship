@@ -34,16 +34,16 @@ import React from 'react'
 import PropTypes from 'prop-types' //imports should always be done in the start of the file.
 //Following is the preferred way to use defaultProps to get rid of the above warnings.
 import Button from './Button'
-const Header = ({title='Task Tracker'}) => {
+import { useLocation } from 'react-router-dom'
+const Header = ({title='Task Tracker',onAdd,showAddTask}) => {
   //We can pass functions as props.
-  const click =()=>{
-    alert('clicked');
-  }
+  const location=useLocation();
   return (
     <div>
       <header className='header'>
         <h1 style={HeaderStyle}>{title}</h1>
-        <Button color='green' text='Add' onClick={click}/>
+        {/* {showAddTask?<Button color='red' text='Hide' onAdd={onAdd}/>:<Button color='green' text='Add' onAdd={onAdd}/>} */}
+        {location.pathname==='/'&&<Button color={showAddTask?'red':'green'} text={showAddTask?'Hide':'Add'} onAdd={onAdd}/>}
       </header>
     </div>
   )

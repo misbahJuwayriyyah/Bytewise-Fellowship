@@ -70,63 +70,116 @@
 //      npm i react-icons
 import Header from './Components/Header'
 import Tasks from './Components/Tasks'
-import React, { useState} from 'react'
+import React, { useState, useEffect} from 'react'
+import AddTask from './Components/AddTask'
+import Footer from './Components/Footer'
+import About from './Components/About'
+import {BrowserRouter as Router, Route,Routes} from 'react-router-dom'
 //importing React is a must for class components.'
 const App = () => {
   //The events are stored in App.js and then use them in props
-  const [tasks,setTasks]=useState([
-    {
-      "id": 1,
-      "text": "Doctor Appointment",
-      "day": "July 10th at 2:30pm",
-      "reminder": true
-    },
-    {
-      "id": 2,
-      "text": "Team Meeting",
-      "day": "July 11th at 11:00am",
-      "reminder": true
-    },
-    {
-      "id": 3,
-      "text": "Grocery Shopping",
-      "day": "July 12th at 5:00pm",
-      "reminder": false
-    },
-    {
-      "id": 4,
-      "text": "Yoga Class",
-      "day": "July 13th at 6:30am",
-      "reminder": true
+  const [tasks,setTasks]=useState([]);
+  const [showAddTask,setShowAddTask]=useState(false);
+  useEffect(()=>{
+    const getTasks=async()=>{
+      const tasksFromServer=await fetchTasks();
+      setTasks(tasksFromServer);
     }
-  ]
-  );
+    getTasks();
+  },[]);//Dependency array -- if any value changes
+  //Fetch Tasks
+  const fetchTasks=async()=>{
+    const res =await fetch('http://localhost:5000/tasks');
+    const data=await res.json();
+    return data;
+  }
   //Deleting Task
-  const dltTask=(id)=>{
+  const dltTask= async(id)=>{
     // The filter function in JavaScript creates a new array containing all elements from the original array that pass a specified test function.
     //so here we are basically returning a new array that consists of all the tasks except for the task whose id is passed as an argument.
+    await fetch(`http://localhost:5000/tasks/${id}`,{method:'DELETE'}) // We would not store it in any variable because we are not fetching anything.
     setTasks(tasks.filter((task)=>task.id!==id))
   }
+  //Fetch Task
+  const fetchTask=async(id)=>{
+    const res =await fetch(`http://localhost:5000/tasks/${id}`);
+    const data=await res.json();
+    return data;
+  }
   //Setting a reminder (Toggle the reminder on doubleClick and border green on left if true)
-  const ToggleReminder=(id)=>{
+  const ToggleReminder=async(id)=>{
+    const taskToToggle=await fetchTask(id);
+    const updatedTask={...taskToToggle,reminder:!taskToToggle.reminder}; //remember
+    const res=await fetch(`http://localhost:5000/tasks/${id}`,{method:'PUT',
+          headers:{'Content-type':'application/json'},
+          body:JSON.stringify(updatedTask)
+        })
+    const data=await res.json();
     setTasks(
       tasks.map((task)=>{
-        return task.id===id?{...task,reminder:!task.reminder}:task
+        return task.id===id?{...task,reminder:data.reminder}:task
         }
       )
     )
   }
+  //Add Task
+  const addTask=async(task)=>{
+    // const id=Math.floor(Math.random()*10000)+1; json adds the id for us
+    // const newTask={id,...task};
+    // setTasks([...tasks,newTask]);
+    const res=await fetch(`http://localhost:5000/tasks`,{method:'POST',
+     headers:{
+      'Content-type':'application/json'
+     },
+     body:JSON.stringify(task) //on retreiving : convert into json, on posting: convert into stringify (obj to json string).
+    })
+    const data=await res.json(); //must await as it is a promise
+    setTasks([...tasks,data]);
+  }
   return (
-    <div className='container'>
+    <Router>
+      <div className='container'>
       {/*We can pass component props from here. Comments inside children section of tag should be placed inside braces. To pass numbers/booleans use braces.*/}
-      <Header/>
-      {/*We want to control tasks through other components */}
-      {tasks.length>0?<Tasks tasks={tasks} onDelete={dltTask} reminder={ToggleReminder}/>:'No Tasks to Display'}
+      <Header onAdd={()=>setShowAddTask(!showAddTask)} showAddTask={showAddTask}/>
+      <Routes>
+          <Route path='/' element={
+            <>
+              {showAddTask && <AddTask onAdd={addTask}/>} {/*alternative to tertianry */}
+              {/*We want to control tasks through other components */}
+              {tasks.length>0?<Tasks tasks={tasks} onDelete={dltTask} reminder={ToggleReminder}/>:'No Tasks to Display'}
+            </>
+          }/>
+          <Route path='/about' element={<About/>}/> {/*Remember the syntax */}
+      </Routes>
+      {/* Using <Routes> and <Route> correctly: The <Routes> component should only wrap <Route> components, and each <Route> should use the element prop instead of render or component.
+      exact prop: In React Router v6, the exact prop is no longer needed.
+      Nesting <Routes>: You should not nest <Routes> components. Instead, you should have a single <Routes> component wrapping all your <Route> components.
+      Passing props: To pass props to a component in a route, you should use the element prop with JSX. */}
+      
+      <Footer/>
     </div>
+    </Router>
   )
 }
 
 
 export default App
+//npm run build -- This will store all your assets in the 'build' folder and that's what you'll use for the production.
+//Locally:
+// npm install -g serve
+//   serve -s build
+//OR
+// serve -s build -p 8000
+// We can delete all the foldrs and this will still work.
+
+//JSON Server: (mock server)
+//npm install json-server
+// TO run the above you need a new script in package.json: "server":"json-server --watch db.json --port 5000"
+//npm run server
+//remeber C (add task) R (fetch) U (ToggleReminder) D (dltTask) operations
+
+//React-Router: 
+//  npm install react-router-dom
+
 
 
