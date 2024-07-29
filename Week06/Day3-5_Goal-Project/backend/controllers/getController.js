@@ -1,5 +1,10 @@
 //use express async handler: npm install expess-async-handler
 const asyncHandler=require('express-async-handler');
+//We require async handler before working with databases. we will use mongodb atlas for this purpose.
+// (you can even download it - compass)
+
+
+
 //@route GET /api/goals
 //@access private
 //@desc creating a function to get goals

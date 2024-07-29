@@ -12,8 +12,12 @@
 const express = require('express');
 const dotenv =require('dotenv').config();
 const {errorHandler}=require('./middleware/errorMiddleware');
+const colors=require('colors');
+const {connectDB}=require('./config/db')
 const PORT=process.env.PORT||5000;
 
+
+connectDB();
 //Initialize express
 const app=express();
 
@@ -47,3 +51,6 @@ app.use(errorHandler);
 
 app.listen(PORT,()=>console.log(`Server Started on Port ${PORT}`));
 
+//MongoDB->create project->create cluster->create db user-> goto databases -> collection -> add databse+collection -> copy url
+//Compass->new connection->url
+//Always check network access and --version
