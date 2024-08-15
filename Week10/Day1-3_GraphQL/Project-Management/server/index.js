@@ -31,7 +31,9 @@
 const express=require('express');
 const dotenv=require('dotenv').config(); //use .config() while importing is better
 const {graphqlHTTP}=require('express-graphql');
-const schema=require('./schema/schema')
+const schema=require('./schema/schema');
+const {connectionDB,disconnectionDB}=require('./database/conn');
+const colors=require('colors');
 
 PORT=process.env.PORT||5000;
 
@@ -43,4 +45,4 @@ app.use('/graphql',graphqlHTTP({
     graphiql:process.env.NODE_ENV==='Development',
 }));
 
-app.listen(PORT,()=>{console.log(`Server is listening on port ${PORT}`)})
+connectionDB().then(()=>{app.listen(PORT,()=>{console.log(`Server is listening on port ${PORT}`)})}).catch((error)=>{console.log(error)});

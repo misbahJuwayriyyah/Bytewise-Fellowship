@@ -1,6 +1,10 @@
 //In graphQL data can be anything
-const {projects,clients}=require('../sampleData');
-const {GraphQLObjectType, GraphQLID, GraphQLString, GraphQLSchema, GraphQLList}=require('graphql');
+const {GraphQLObjectType, GraphQLID, GraphQLString, GraphQLSchema, GraphQLList,GraphQLNonNull,GraphQLEnumType}=require('graphql');
+
+//Mongoose models
+//Import what was exported as a model without destructuring
+const Project=require('../database/models/project');
+const Client=require('../database/models/client');
 
 //Client type
 const ClientType=new GraphQLObjectType({
@@ -26,20 +30,21 @@ const ProjectType=new GraphQLObjectType({
         client:{
             type:ClientType,
             resolve(parent,args){
-                return clients.find(client=>client.id===parent.clientId)
+                return Client.findById(parent.clientId);
             }
         }
     })
 });
 
-//queries - root query
+//queries - root query 
+//Fetching the data
 const RootQuery=new GraphQLObjectType({
     name:"RootQueryType",
     fields:{
         clients:{
             type:new GraphQLList(ClientType),
             resolve(parent,args){
-                return clients
+                return Client.find();
             }
         },
         client:{
@@ -47,27 +52,90 @@ const RootQuery=new GraphQLObjectType({
             args:{id:{type:GraphQLID}},
             resolve(parent,args){
                 //we will put mongoose function here
-                return clients.find(client=>client.id===args.id)
+                return Client.findById(args.id);
             }
         },
         projects:{
             type:new GraphQLList(ProjectType),
             resolve(parent,args){
-                return projects
+                //connecting to actual db
+                return Project.find();
             }
         },
         project:{
             type:ProjectType,
             args:{id:{type:GraphQLID}},
             resolve(parent,args){
-                return projects.find(project=>project.id===args.id)
+                return Project.findById(args.id);
             }
         }
     }
 });
 
+//Mutations
+const mutation=new GraphQLObjectType({
+    name:"Mutation",
+    fields:{
+        addClient:{
+            type:ClientType,
+            args:{
+                name:{type:GraphQLNonNull(GraphQLString)},
+                email:{type:GraphQLNonNull(GraphQLString)},
+                phone:{type:GraphQLNonNull(GraphQLString)},
+            },
+            resolve(parent,args){
+                const client=new Client({
+                    name:args.name,
+                    email:args.email,
+                    phone:args.phone
+                });
+                return client.save();
+            }
+        },
+        deleteClient:{
+            type:ClientType,
+            args:{id:{type:GraphQLNonNull(GraphQLID)}},
+            resolve(parent,args){
+                return Client.findByIdAndRemove(args.id);
+            }
+        },
+        addProject:{
+            type:ProjectType,
+            args:{
+                name:{type:GraphQLNonNull(GraphQLString)},
+                description:{type:GraphQLNonNull(GraphQLString)},
+                status:{
+                    type:GraphQLNonNull(new GraphQLEnumType({
+                        name:'ProjectStatus',
+                        values:{
+                            'new':{value:'Not Started'},
+                            'progress':{value:'In Progress'},
+                            'old':{value:'Done'}
+                        }
+                    })),
+                    defaultValue:'Not Started'
+                    },
+                    clientId:{
+                        type:GraphQLNonNull(GraphQLID)
+                    }
+                
+            },
+            resolve(parent,args){
+                const project=new Project({
+                    name:args.name,
+                    description:args.description,
+                    status:args.status,
+                    clientId:args.clientId
+                })
+                return project.save();
+            }
+        }
+}
+})
+
 module.exports=new GraphQLSchema({
-    query:RootQuery
+    query:RootQuery,
+    mutation
 })
 
 //The following opens Graphiql:
@@ -107,3 +175,17 @@ module.exports=new GraphQLSchema({
 //   }
 
 //Let's work on mongoDB now
+//setup+connection
+//compass is suggested for looking into db.
+//connected to compass
+
+//create a new client and return all the data
+// mutation {
+//     addClient(name: "Tony Stark", email: "ironman@gmail.com", phone: "955-365-3376") {
+//       id
+//       name
+//       email
+//       phone
+//     }
+//   }
+//go to gist traversy for all these queries. For mutation do not start with {}. also import the models without destructuring
