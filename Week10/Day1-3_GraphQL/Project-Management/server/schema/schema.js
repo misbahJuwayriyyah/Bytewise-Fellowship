@@ -13,6 +13,25 @@ const ClientType=new GraphQLObjectType({
     })
 });
 
+//Project Type
+const ProjectType=new GraphQLObjectType({
+    name:"Project",
+    fields:()=>({
+        id:{type:GraphQLID},
+        clientId:{type:GraphQLID},
+        name:{type:GraphQLString},
+        description:{type:GraphQLString},
+        status:{type:GraphQLString},
+        //following is how you create a relationship between multiple types. Here parent is project and child is client.
+        client:{
+            type:ClientType,
+            resolve(parent,args){
+                return clients.find(client=>client.id===parent.clientId)
+            }
+        }
+    })
+});
+
 //queries - root query
 const RootQuery=new GraphQLObjectType({
     name:"RootQueryType",
@@ -29,6 +48,19 @@ const RootQuery=new GraphQLObjectType({
             resolve(parent,args){
                 //we will put mongoose function here
                 return clients.find(client=>client.id===args.id)
+            }
+        },
+        projects:{
+            type:new GraphQLList(ProjectType),
+            resolve(parent,args){
+                return projects
+            }
+        },
+        project:{
+            type:ProjectType,
+            args:{id:{type:GraphQLID}},
+            resolve(parent,args){
+                return projects.find(project=>project.id===args.id)
             }
         }
     }
@@ -62,3 +94,16 @@ module.exports=new GraphQLSchema({
 //For accessing everything you need to run following:   clients{
 //     name
 // }
+
+//The query when it comes to relationships would be as follows:
+// {
+  
+//     project(id:"4"){
+//       name
+//       client {
+//         name
+//       }
+//     }
+//   }
+
+//Let's work on mongoDB now
