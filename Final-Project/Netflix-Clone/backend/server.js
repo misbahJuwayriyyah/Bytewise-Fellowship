@@ -1,6 +1,9 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 import path from "path";
+import cors from "cors"
+import Stripe from "stripe";
+
 
 import authRoutes from "./routes/auth.route.js";
 import movieRoutes from "./routes/movie.route.js";
@@ -32,7 +35,47 @@ if (ENV_VARS.NODE_ENV === "production") {
 		res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
 	});
 }
+//Payment
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+  })
+)
 
+const stripe = Stripe(ENV_VARS.STRIPE_KEY)
+app.post("/create-checkout-session", async (req, res) => {
+	try {
+	  const session = await stripe.checkout.sessions.create({
+		payment_method_types: ["card"],
+		mode: "subscription",
+		line_items: [
+		  {
+			price_data: {
+			  currency: "pkr",
+			  product_data: {
+				name: "Monthly Subscription",
+			  },
+			  unit_amount: 108000,
+			  recurring: {
+				interval: "month",
+			  },
+			},
+			quantity: 1,
+		  },
+		],
+		success_url: `${ENV_VARS.CLIENT_URL}`,
+		cancel_url: `${ENV_VARS.CLIENT_URL}`,
+	  });
+  
+	  res.json({ url: session.url });
+	} catch (e) {
+	  console.error(e); // Log the error to understand what went wrong
+	  res.status(500).json({ error: e.message });
+	}
+  });
+  
+
+//Running server
 app.listen(PORT, () => {
 	console.log("Server started at http://localhost:" + PORT);
 	connectDB();
