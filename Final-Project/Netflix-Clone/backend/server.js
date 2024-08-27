@@ -36,11 +36,7 @@ if (ENV_VARS.NODE_ENV === "production") {
 	});
 }
 //Payment
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-  })
-)
+//something
 
 const stripe = Stripe(ENV_VARS.STRIPE_KEY)
 app.post("/create-checkout-session", async (req, res) => {
